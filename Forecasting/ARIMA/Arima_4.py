@@ -1,4 +1,3 @@
-# from Average import *
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -10,7 +9,7 @@ import itertools
 
 warnings.filterwarnings('ignore')
 
-file_path = r"C:\Users\i'm_jit99\Desktop\8sem\Forecasting\Average\4.csv" 
+file_path = r"C:\Users\jit24\OneDrive\Desktop\Major_project\Major__project\Forecasting\Average\4.csv" 
 df=pd.read_csv(file_path)
 df.set_index('date',inplace=True)
 print(df.head())
@@ -116,7 +115,7 @@ print(model.bic)
 print(model.summary())
 
 
-"""making prediction on the test cases"""
+"""making prediction"""
 
 
 start=len(train_section)
@@ -141,4 +140,74 @@ print("MAE:", mae)
 FuturePrediction.plot(legend=True,label="predicted")
 
 
-plt.show()
+start = len(train_section) #-20
+end = len(train_section)  #+40
+future_prediction = model.predict(start=start, end=end, type='levels')
+
+print("Future predictions:")
+print(future_prediction)
+
+
+"""
+1     410.158686
+2     327.980498
+3     515.005297
+4     475.784684
+5     460.949201
+6     498.086316
+7     385.075262
+8     365.747048
+9     465.662756
+10    502.258096
+11    498.074620
+12    491.846347
+13    499.540123
+14    398.212930
+15    367.999681
+16    475.611924
+17    505.603016
+18    498.226888
+19    499.025170
+20    523.922662
+21    406.309453
+22    341.204029
+23    408.305154
+24    497.822385
+25    506.847921
+26    508.172929
+27    494.575482
+28    416.550656
+29    351.970493
+30    399.110873
+1    483.439014
+2    515.068946
+3    512.836319
+4    489.664709
+5    420.029657
+6    361.819183
+7    392.575760
+8    472.398835
+9    517.238112
+10    518.285690
+11    487.888785
+12    422.745156
+13    368.441190
+14    389.001472
+15    462.901608
+16    516.684829
+17    522.649134
+18    488.767300
+19    425.086037
+20    373.205239
+21    386.689462
+22    455.032562
+23    514.371077
+24    525.943751
+25    491.115851
+26    427.689805
+27    376.708105
+28    385.015310
+29    448.376554
+30    511.114922
+31    528.188774
+"""

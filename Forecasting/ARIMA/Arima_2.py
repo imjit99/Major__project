@@ -9,7 +9,7 @@ import itertools
 
 warnings.filterwarnings('ignore')
 
-file_path = r"C:\Users\i'm_jit99\Desktop\8sem\Forecasting\Average\2.csv"
+file_path = r"C:\Users\jit24\OneDrive\Desktop\Major_project\Major__project\Forecasting\Average\2.csv"
 df=pd.read_csv(file_path)
 df.set_index('date',inplace=True)
 print(df.head())
@@ -104,7 +104,7 @@ print(model.summary())
 
 
 
-"""making prediction on the test cases"""
+"""making prediction"""
 
 start=len(train_section)
 end=len(train_section)+len(test_section)-1
@@ -128,13 +128,77 @@ print("MAE:", mae)
 FuturePrediction.plot(legend=True,label="predicted")
 
 
-plt.show()
+
+start = len(train_section) # -20
+end = len(train_section)   # +40 
+future_prediction = model.predict(start=start, end=end, type='levels')
+
+print("Future predictions:")
+print(future_prediction)
 
 
 
 
-
-
-
-
-
+"""
+1     300.516381
+2     298.042123
+3     236.004417
+4     221.603622
+5     321.425464
+6     294.695983
+7     317.056823
+8     296.624936
+9     213.917848
+10    217.333500
+11    291.027415
+12    302.675897
+13    307.826992
+14    337.676033
+15    319.873407
+16    226.357511
+17    219.464755
+18    292.828266
+19    313.439784
+20    309.026196
+21    340.134748
+22    330.120004
+23    238.002426
+24    203.989060
+25    252.849938
+26    296.342631
+27    317.719122
+28    345.666245
+29    328.637626
+30    256.300120
+1    214.511034
+2    238.659014
+3    279.485923
+4    316.061086
+5    346.186282
+6    332.660060
+7    271.507152
+8    224.979295
+9    229.875470
+10    265.075366
+11    309.189849
+12    344.380737
+13    337.519130
+14    285.631900
+15    235.656439
+16    225.560532
+17    252.729224
+18    299.413909
+19    340.072324
+20    341.726840
+21    298.716914
+22    246.998751
+23    224.858361
+24    242.566373
+25    288.120607
+26    333.455025
+27    344.359212
+28    310.575904
+29    259.011781
+30    227.233618
+31    234.738352
+"""

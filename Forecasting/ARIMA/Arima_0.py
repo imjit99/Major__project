@@ -6,8 +6,11 @@ from statsmodels.tsa.stattools import adfuller
 from statsmodels.tsa.arima.model import ARIMA
 import itertools
 warnings.filterwarnings('ignore')
+from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_absolute_error
+from math import sqrt
 
-file_path = r"C:\Users\i'm_jit99\Desktop\8sem\Forecasting\Average\0.csv"
+file_path = r"C:\Users\jit24\OneDrive\Desktop\Major_project\Major__project\Forecasting\Average\0.csv"
 df=pd.read_csv(file_path)
 df.set_index('date',inplace=True)
 print(df.head())
@@ -104,23 +107,17 @@ print(model.summary())
 
 
 
-"""making prediction on the test cases"""
+"""making prediction"""
 
 start=len(train_section)
 end=len(train_section)+len(test_section)-1
 FuturePrediction=model.predict(start=start,end=end,type='levels')
 print(FuturePrediction)
 
-
-from sklearn.metrics import mean_squared_error
-from math import sqrt
 test_section['data'].mean()
 rmse=sqrt(mean_squared_error(test_section['data'],FuturePrediction))
 print(f"rmse score is {rmse}")
-# print(df['data'].mean())
 print(test_section['data'].mean())
-
-from sklearn.metrics import mean_absolute_error
 mae = mean_absolute_error(test_section['data'], FuturePrediction)
 
 print("MAE:", mae)
@@ -128,18 +125,74 @@ print("MAE:", mae)
 FuturePrediction.plot(legend=True,label="predicted")
 
 
-# plt.show()
-
-
-# ...
-
-# Fit the ARIMA model
-model = ARIMA(train_section['data'], order=(5, 0, 3)).fit()
-
-# Predict the future values
-start = len(train_section)- 15
-end = len(train_section)   # Predict the next 10 values
+start = len(train_section) #-20
+end = len(train_section) # +40
 future_prediction = model.predict(start=start, end=end, type='levels')
 
 print("Future predictions:")
 print(future_prediction)
+
+
+"""
+1     715.041011
+2     701.309993
+3     629.010087
+4     685.117283
+5     774.380911
+6     710.926012
+7     737.103104
+8     760.149430
+9     568.879572
+10    543.679072
+11    753.988973
+12    798.244567
+13    772.846143
+14    772.703691
+15    788.037840
+16    568.029629
+17    515.837776
+18    701.072314
+19    760.038900
+20    747.181129
+21    773.600771
+22    781.320894
+23    571.392268
+24    531.527159
+25    698.029590
+26    783.502626
+27    733.901849
+28    785.705448
+29    774.198386
+30    591.780254
+1    535.500968
+2    701.553587
+3    769.113258
+4    726.889774
+5    780.010720
+6    779.139780
+7    601.254285
+8    546.386772
+9    700.265852
+10    760.017545
+11    717.632506
+12    776.433903
+13    781.456829
+14    610.956844
+15    555.893762
+16    700.230972
+17    751.494140
+18    709.543783
+19    772.473126
+20    783.186129
+21    619.528185
+22    565.076354
+23    700.552242
+24    744.037642
+25    702.143623
+26    768.521389
+27    784.183324
+28    627.227349
+29    573.785406
+30    701.248714
+31    737.474190
+"""
