@@ -10,6 +10,7 @@ ActualValue = np.array([300.625, 298.125, 226.0, 192.5, 321.375, 314.375, 316.12
 PredictingValue = np.array([300.516381, 298.042123, 236.004417, 221.603622, 321.425464, 294.695983, 317.056823, 296.624936, 213.917848, 217.3335, 291.027415, 302.675897, 307.826992, 337.676033, 319.873407, 226.357511, 219.464755, 292.828266, 313.439784, 309.026196, 340.134748, 330.120004, 238.002426, 203.98906, 252.849938, 296.342631, 317.719122, 345.666245, 328.637626, 256.30012, 214.511034, 238.659014, 279.485923, 316.061086, 346.186282, 332.66006, 271.507152, 224.979295, 229.87547, 265.075366, 309.189849, 344.380737, 337.51913, 285.6319, 235.656439, 225.560532, 252.729224, 299.413909, 340.072324, 341.72684, 298.716914, 246.998751, 224.858361, 242.566373, 288.120607, 333.455025, 344.359212, 310.575904, 259.011781, 227.233618, 234.738352]
 )
 
+<<<<<<< HEAD
 plt.plot(Dates1,ActualValue , label='Actual Value')
 plt.plot(Dates,PredictingValue , label='Predicting Value')
 
@@ -17,10 +18,20 @@ plt.plot(Dates,PredictingValue , label='Predicting Value')
 
 
 
+=======
+# for plotting the Actual values and the expected predictions
+plt.plot(Dates1,ActualValue , label='Actual Value')
+plt.plot(Dates,PredictingValue , label='Predicting Value')
+
+>>>>>>> 0b365cd3daead317d114aa298fb02b47af88497f
 plt.xlabel('Date')
 plt.ylabel('Value')
 plt.title('Actual vs Predicting Values (Clustering 2)')
 plt.legend()
 plt.xticks(rotation=60)
 
+<<<<<<< HEAD
+=======
+# for vizualization
+>>>>>>> 0b365cd3daead317d114aa298fb02b47af88497f
 plt.show()
