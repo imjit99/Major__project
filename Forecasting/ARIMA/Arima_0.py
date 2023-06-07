@@ -10,7 +10,9 @@ from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_absolute_error
 from math import sqrt
 
+"""enter your file path"""
 file_path = r"C:\Users\jit24\OneDrive\Desktop\Major_project\Major__project\Forecasting\Average\0.csv"
+
 df=pd.read_csv(file_path)
 df.set_index('date',inplace=True)
 print(df.head())
@@ -81,6 +83,8 @@ for combination in all_combinations:
     AiC[combination] = model.aic
     BiC[combination] = model.bic
 
+""" for all combinations of (p,d,q) with the AIC and BIC values """
+
 # print(AiC)
 # print(BiC)
 
@@ -98,8 +102,6 @@ print("<========================================>")
 
 model=ARIMA(train_section['data'],order=(5,0,3)).fit()
 print(model.aic) 
-# """5,0,1 = 232/240"""
-# print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
 print(model.bic)
 print(model.summary())
 
@@ -124,9 +126,11 @@ print("MAE:", mae)
 
 FuturePrediction.plot(legend=True,label="predicted")
 
+""" in start first 21 values i.e. 70% comes under the train_section and remaining 9 (30%) comes under test_section
+To predict the vaalues for the next month i.e. July, we need to add 40 in the 'len(train_section)'. Similarly if we subtract 20 from the 'len(train_section)' it will show us from the previous 21 days."""
 
 start = len(train_section) #-20
-end = len(train_section) # +40
+end = len(train_section)  +40
 future_prediction = model.predict(start=start, end=end, type='levels')
 
 print("Future predictions:")
@@ -134,6 +138,7 @@ print(future_prediction)
 
 
 """
+These are the predictions
 1     715.041011
 2     701.309993
 3     629.010087
